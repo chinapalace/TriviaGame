@@ -6,6 +6,42 @@
   $(".answer3").on("click", wrongChoice);
   $(".answer4").on("click", wrongChoice);
 
+
+// hover effect over answers 
+$(".answer1").hover(
+	function() {
+	$(this).css("color", "#ffc600");
+	}, function(){
+        $(this).css("color", "white");
+	console.log("hover")
+	});
+
+$(".answer2").hover(
+	function() {
+	$(this).css("color", "#ffc600");
+	}, function(){
+        $(this).css("color", "white");
+	console.log("hover")
+	});
+
+$(".answer3").hover(
+	function() {
+	$(this).css("color", "#ffc600");
+	}, function(){
+        $(this).css("color", "white");
+	console.log("hover")
+	});
+
+$(".answer4").hover(
+	function() {
+	$(this).css("color", "#ffc600");
+	}, function(){
+        $(this).css("color", "white");
+	console.log("hover")
+	});
+
+
+
 // };
 // var to keep track of correct answer
 var score = 0;
@@ -79,6 +115,7 @@ displayAnswers();
 
 // show new question
 function displayQuestion()	{
+
 	$("#image-holder").html("");
   $(".question").html(question.ask);
 
@@ -93,15 +130,17 @@ function displayAnswers()	{
 }
 
 function displayNext() {
+			if(questionCount > 3)	{
+		quizOver()
+	} else {
+
+
 	question = questions[questionCount]
 	console.log(question)
 	console.log(questionCount)
 	$(".questions").show();
 	displayQuestion();
 	displayAnswers();
-
-	if(questionCount == 4)	{
-		quizOver();
 	}
 }
 
@@ -140,5 +179,20 @@ function nextQuestion()	{
 
 function quizOver()	{
 	$('main').hide()
+	$('.gameOver').html('Good Job!')
+	// pause for 2 seconds and give option to restart quiz
+	setTimeout(playAgain, 2000)
 
+}
+
+function playAgain()	{
+	$('.gameOver').html('Play Again?')
+	.on("click", reset);
+}
+
+function reset()	{
+	questionCount=0; 
+	displayNext();
+	$('.gameOver').hide();
+	$('main').show();
 }

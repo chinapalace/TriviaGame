@@ -3,8 +3,42 @@ html {
 	background-size: cover;
 }
 body {
+	background: rgba(0,0,0,0.4);
+	font-family: sans-serif;
+	color:white;
+	text-shadow:black 0 0 5px;
 	text-align: center;
-	background-color: lightblue;
+	border: 5px solid white;
+	border-radius: 25px;
 	min-height: 90vh;
 	margin: 30px;
+}
+
+header {
+	padding-top: 40px;
+	font-size: 30px;
+}
+div {
+	font-size: 20px;
+	padding: 5px;
+}
+
+/*.answer1 {
+	color: #ffc600;
+}*/
+
+.question {
+	padding-top: 30px;
+}
+
+.answer1 {
+	padding-top:15px;
+}
+
+#image-holder {
+	font-size: 40px;
+}
+
+.gameOver {
+	font-size: 60px;
 }
