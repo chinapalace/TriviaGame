@@ -9,14 +9,15 @@
 // };
 // var to keep track of correct answer
 var score = 0;
+console.log(score);
 // var to keep track of questions
-var questionCount = 0;
+
 
 // question objects
  var sleep = {
 
 	ask: "How many hours a day are whales thought to sleep?",
-	correctAnswer: "8 hours",
+	c: "8 hours",
 	a1: "6 hours",
 	a2: "4 hours",
 	a3: "10 hours",
@@ -59,27 +60,29 @@ var blowhole = {
 };
 
 // array of question objects
-var questions = [sleep, fins, largestMammal, blowhole]
+var questions = [sleep, fins, largestMammal, blowhole];
+
+// counter variable
+var questionCount = 0;
 
 
-// question randomizer
-var question = questions[Math.floor(Math.random()*questions.length)];
+question = questions[questionCount];
+
+
 console.log(questions);
-console.log(Math.floor(Math.random()*questions.length))
 console.log(question)
 console.log(fins.ask)
 console.log(question['ask'])
-console.log(question['a'])
 
-
-displayQuestion()
-displayAnswers()
+displayQuestion();
+displayAnswers();
 
 // show new question
 function displayQuestion()	{
-
+	$("#image-holder").html("");
   $(".question").html(question.ask);
-};
+
+}
 
 // show answer choices 
 function displayAnswers()	{
@@ -87,34 +90,55 @@ function displayAnswers()	{
 	$(".answer2").html(question.a1);
 	$(".answer3").html(question.a2);
 	$(".answer4").html(question.a3);
-};
+}
+
+function displayNext() {
+	question = questions[questionCount]
+	console.log(question)
+	console.log(questionCount)
+	$(".questions").show();
+	displayQuestion();
+	displayAnswers();
+
+	if(questionCount == 4)	{
+		quizOver();
+	}
+}
 
 // correct answer selected
 function displayCorrect()	{
 	$('.questions').hide();
 	$('#image-holder').append('<p>Correct!</p>')
 	.append("<img src=" + question['image'] + " width='480' height='360' frameBorder='0'>");
-};
+}
 
 function correctChoice()	{
 	score++;
-	console.log(score)
 	questionCount++;
 	displayCorrect();
-};
-
+	nextQuestion();
+}
 
 // wrong answer selected
 function displayIncorrect()	{
 	$('.questions').hide()
-	$('#image-holder').append('<p>Wrong!</p>')
+	$('#image-holder').show().append('<p>Wrong!</p>')
 	.append("<img src='assets/images/wrongAnswer.gif'>");
 	
-};
-
+}
 function wrongChoice()	{
 	questionCount++;
 	displayIncorrect();
-};
+	nextQuestion();
+}
+console.log(questionCount)
 
+// move to next question after response gif plays for 3 seconds
+function nextQuestion()	{
+	setTimeout(displayNext, 3000);
+}
 
+function quizOver()	{
+	$('main').hide()
+
+}
