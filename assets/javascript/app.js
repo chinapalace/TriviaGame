@@ -148,7 +148,7 @@ function displayNext() {
 function displayCorrect()	{
 	$('.questions').hide();
 	$('#image-holder').append('<p>Correct!</p>')
-	.append("<img src=" + question['image'] + " width='480' height='360' frameBorder='0'>");
+	.append("<img src=" + question['image'] + " width='360' height='240' frameBorder='0'>");
 }
 
 function correctChoice()	{
@@ -162,7 +162,7 @@ function correctChoice()	{
 function displayIncorrect()	{
 	$('.questions').hide()
 	$('#image-holder').show().append('<p>Wrong!</p>')
-	.append("<img src='assets/images/wrongAnswer.gif'>");
+	.append("<img src='assets/images/wrongAnswer.gif' width='360' height='240' frameBorder='0'>");
 	
 }
 function wrongChoice()	{
